@@ -1,7 +1,5 @@
 from ipykernel.kernelbase import Kernel
 
-
-
 class UpperCaseKernel(Kernel):
     implementation = 'UpperCase'
     implementation_version = '1.0'
@@ -15,11 +13,8 @@ class UpperCaseKernel(Kernel):
     }
     banner = "UpperCaseKernel"
 
-    # use ipython method
     def do_execute(self, code, silent, store_history=True, user_expressions=None,
                    allow_stdin=False):
-        if code.strip() in ['quit', 'quit()', 'exit', 'exit()','q']:
-            self.do_shutdown(True)
         if not silent:
             code = code.upper()
             stream_content = {'name': 'stdout', 'text': code}
@@ -30,4 +25,4 @@ class UpperCaseKernel(Kernel):
                 'execution_count': self.execution_count,
                 'payload': [],
                 'user_expressions': {},
-                }
+               }
